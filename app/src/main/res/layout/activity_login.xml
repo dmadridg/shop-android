@@ -83,6 +83,7 @@
                 android:textColor="#FFF"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
+                android:onClick="registerForm"
                 android:background="@drawable/btnstylepink"
                 android:layout_height="wrap_content" />
 
