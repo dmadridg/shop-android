@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         final ProgressDialog progress = new ProgressDialog(this);
         progress.setTitle("Loading");
         progress.setMessage("Wait while loading...");
-        progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
+        progress.setCancelable(false);
         progress.show();
         // To dismiss the dialog
 
@@ -70,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.e("RESPONSE", "" + response);
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     boolean success = jsonObject.getBoolean("success");
@@ -123,6 +124,8 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    progress.dismiss();
+                    showAlert("Ocurrió un error inesperado del servidor. Intente de nuevo más tarde.");
                 }
             }
         };
